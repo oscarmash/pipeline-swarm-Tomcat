@@ -2,6 +2,6 @@
 
 ## Subir a git
 
-COMMIT="Prueba 1"
+COMMIT="Test"
 
 git add . && git commit -am "$COMMIT" && git push
