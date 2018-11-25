@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent swarm-devops
 
     stages {
         stage('Prepare') {
