@@ -1,5 +1,5 @@
 pipeline {
-    agent swarm-devops
+    agent {label 'swarm-devops'}
 
     stages {
         stage('Prepare') {
