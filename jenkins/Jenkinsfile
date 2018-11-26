@@ -15,6 +15,9 @@ pipeline {
 		sh "hostname"
 		sh "pwd"
 		sh "ls -la"
+		sh "cd docker"
+		sh "source env-swarm-manager.sh"
+		sh "docker info"
             }
         }
         stage('Deploy') {
