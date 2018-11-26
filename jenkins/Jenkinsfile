@@ -14,6 +14,7 @@ pipeline {
 		echo "BUILD NUMBER: ${env.BUILD_NUMBER}"
 		sh "hostname"
 		sh "pwd"
+		sh "ls -la"
             }
         }
         stage('Deploy') {
