@@ -3,9 +3,9 @@ pipeline {
 		// Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
 		dockerfile {
 		filename 'Dockerfile'
-		dir 'tomcat8'
+		dir 'nginx'
 		label 'swarm-devops'
-		additionalBuildArgs  "-t helloworld:0.0.${env.BUILD_NUMBER}"
+		additionalBuildArgs  "-t webmolona:0.0.${env.BUILD_NUMBER}"
 		}
 	}
 	stages {
