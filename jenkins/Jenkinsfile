@@ -5,7 +5,7 @@ pipeline {
 		filename 'Dockerfile'
 		dir 'tomcat8'
 		label 'swarm-devops'
-		additionalBuildArgs  "--build-arg version=0.0.${env.BUILD_NUMBER}"
+		additionalBuildArgs  "-t helloworld:0.0.${env.BUILD_NUMBER}"
 		}
 	}
 	stages {
