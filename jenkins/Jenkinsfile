@@ -1,28 +1,24 @@
 pipeline {
-    agent {label 'swarm-devops'}
-
-    stages {
-        stage('Prepare') {
-            steps {
-		echo 'Verificar git..'
-		checkout scm
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-		echo "BUILD NUMBER: ${env.BUILD_NUMBER}"
-		sh "hostname"
-		sh "pwd"
-		sh "ls -la"
-		sh "cd docker"
-		sh "ls -la"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+	agent {
+		// Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
+		dockerfile {
+		filename 'Dockerfile'
+		dir 'docker'
+		label 'swarm-devops'
+		additionalBuildArgs  "--build-arg version=0.0.${env.BUILD_NUMBER}"
+		}
+	}
+	stages {
+		stage('Test') {
+			steps {
+				echo 'Testing..'
+				echo "BUILD NUMBER: ${env.BUILD_NUMBER}"
+				sh "hostname"
+				sh "pwd"
+				sh "ls -la"
+				sh "cd docker"
+				sh "ls -la"
+			}
+		}
+	}
 }
